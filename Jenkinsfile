@@ -8,8 +8,25 @@ pipeline {
     }
 
     stage('Test') {
-      steps {
-        echo 'Test'
+      parallel {
+        stage('Test') {
+          steps {
+            echo 'Test'
+          }
+        }
+
+        stage('unity test') {
+          steps {
+            echo 'unity test'
+          }
+        }
+
+        stage('integration testing') {
+          steps {
+            echo 'integration testing'
+          }
+        }
+
       }
     }
 
@@ -20,8 +37,31 @@ pipeline {
     }
 
     stage('UAT') {
-      steps {
-        echo 'Report'
+      parallel {
+        stage('UAT') {
+          steps {
+            echo 'Report'
+          }
+        }
+
+        stage('Security (DoS resistance)') {
+          steps {
+            echo 'Security'
+          }
+        }
+
+        stage('Performance') {
+          steps {
+            echo 'Performance'
+          }
+        }
+
+        stage('functionality') {
+          steps {
+            echo 'functionality'
+          }
+        }
+
       }
     }
 
