@@ -3,23 +3,19 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        libraryResource 'dependence'
+        echo 'Build'
       }
     }
 
     stage('Test') {
       steps {
-        junit 'test'
-        catchError() {
-          build 'Sol Error'
-        }
-
+        echo 'Test'
       }
     }
 
     stage('Deploy') {
       steps {
-        node(label: 'Funcion')
+        echo 'Deplay'
       }
     }
 
@@ -32,7 +28,7 @@ pipeline {
     stage('Production') {
       steps {
         sleep 5
-        input 'All is ok'
+        echo 'Production'
       }
     }
 
